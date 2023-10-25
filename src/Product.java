@@ -1,10 +1,10 @@
 public class Product extends Menu {
     private double menuPrice;
-    private int menuNumber1;
+//  private int menuNumber1;
 //  private String menuCategory;
 
-    public Product(int menuNumber, String menuName, double menuPrice, String menuExplanation) {
-        super(menuNumber, menuName, menuExplanation);
+    public Product(String menuName, double menuPrice, String menuExplanation) {
+        super(menuName, menuExplanation);
         this.menuPrice = menuPrice;
 //      this.menuCategory = menuCategory;
     }
@@ -36,9 +36,9 @@ public class Product extends Menu {
 //        return menuCategory;
 //    }
 //    프린트프로덕트
-    public void printProduct() {
-        System.out.println(this.menuNumber +". " + this.menuName + " | W " + this.menuPrice/1000 + " | " + this.menuExplanation);
-    }
+//    public void printProduct() {
+//        System.out.println(this.menuNumber +". " + this.menuName + " | W " + this.menuPrice/1000 + " | " + this.menuExplanation);
+//    }
 
 //    @Override
 //    public String toString() {

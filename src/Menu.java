@@ -1,9 +1,9 @@
 public class Menu {
-    protected int menuNumber;
+//    protected int menuNumber;
     protected String menuName;
     protected String menuExplanation;
-    public Menu(int menuNumber, String menuName, String menuExplanation) {
-        this.menuNumber = menuNumber;
+    public Menu(String menuName, String menuExplanation) {
+//        this.menuNumber = menuNumber;
         this.menuName = menuName;
         this.menuExplanation = menuExplanation;
     }
@@ -21,9 +21,9 @@ public class Menu {
 //        this.menuExplanation = menuExplanation;
 //    }
 //    프린트메뉴
-    public void printMenu() {
-        System.out.println(this.menuNumber + ". " + this.menuName + "\t | " + this.menuExplanation);
-    }
+//    public void printMenu() {
+//        System.out.println(this.menuNumber + ". " + this.menuName + "\t | " + this.menuExplanation);
+//    }
 //    @Override
 //    public String toString() {
 //        return menuName + ": " + menuExplanation;
