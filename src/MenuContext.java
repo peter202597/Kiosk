@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 public class MenuContext {
-    private Map<String, List<Menu>> menus;
-    private Map<String, List<Product>> menuProduct;
-    private List<Product> cart;
-    private double totalPrice;
-    private int orderNumber;
+    private Map<String, List<Menu>> menus; // 메뉴
+    private Map<String, List<Product>> menuProduct; // 상품메뉴
+    private List<Product> cart; // 장바구니
+    private double totalPrice; // 가격합계
+    private int orderNumber; // 주문번호
 
     public MenuContext() {
         menus = new HashMap<>();
@@ -17,7 +17,7 @@ public class MenuContext {
         totalPrice = 0.0;
         orderNumber = 0;
 
-        initializeMenuItens();
+        initializeMenuItens(); // 메뉴 상품메뉴 카트 가격합계 주문번호 리셋
     }
 
     private void initializeMenuItens() {
@@ -67,7 +67,7 @@ public class MenuContext {
         icecreamDessertMenus.add(new Product("예산사과샌드", 2.5, "아삭하게 씹히는 예산 사과의 풍미를 더하는 시나몬이 들어있는 샌드"));
         icecreamDessertMenus.add(new Product("크룽지", 2.8, "황설탕 카라멜라이징으로 더 달콤고소한 빅사이즈 크룽지"));
         icecreamDessertMenus.add(new Product("큰마들렌(오리지널)", 2.8, "약13cm의 큰!마들렌 촉촉하고 부드러운 플레인 맛으로 커피 메뉴와 함께 즐겨보세요"));
-        icecreamDessertMenus.add(new Product("고메버터소금빵", 2.5, "프랑스산 고급 발효버터와 안데스산맥 빙하소금의 풍미가 가득");
+        icecreamDessertMenus.add(new Product("고메버터소금빵", 2.5, "프랑스산 고급 발효버터와 안데스산맥 빙하소금의 풍미가 가득"));
         icecreamDessertMenus.add(new Product("맛카롱(순우유)", 2.5, "진한 우유 향과 맛을 그대로 간직한 맛카롱"));
         icecreamDessertMenus.add(new Product("맛카롱(초코크런치)", 2.5, "입안 가득한 달달함! 달콤 폭발 초코 맛카롱"));
         icecreamDessertMenus.add(new Product("노말한소프트", 2.0, "입안에서 부드럽게 사르륵 녹는 마성의 아이스크림"));
@@ -85,7 +85,7 @@ public class MenuContext {
 
         menuProduct.put("Coffe", coffeMenus);
         menuProduct.put("Beverage", beverageMenus);
-        menuProduct.put("IcecreamDessert / 디저트", icecreamDessertMenus);
+        menuProduct.put("IcecreamDessert", icecreamDessertMenus);
         menuProduct.put("PaikSccino", paikSccinoMenus);
     }
     public List<Menu> getMenus(String key) {
@@ -94,14 +94,24 @@ public class MenuContext {
     public List<Product> getMenuProducts(String key) {
         return menuProduct.get(key);
     }
-    public Map<String, List<Product>> getMenuProductMap() {
-        return menuProduct;
+    public void addToCart(Product menuProduct) {
+        cart.add(menuProduct);
+        totalPrice += menuProduct.menuPrice;
     }
-    public List<Product> gerCart() {
-        return cart;
+    public void displayCart() {
+        for (Product product : cart) {
+            System.out.println(product.menuName + "   | " + product.menuPrice + " | " + product.menuExplanation);
+        }
     }
-    public void addMenu(String key, String menuExplanation) {
-        menus.get("Main").add(new Menu(key, menuExplanation));
-        menuProduct.put(key, new ArrayList<>());
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+    public int generateOrderNumber() {
+        orderNumber++;
+        return orderNumber;
+    }
+    public void resetCart() {
+        cart.clear();
+        totalPrice = 0.0;
     }
 }

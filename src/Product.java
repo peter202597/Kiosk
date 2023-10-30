@@ -1,5 +1,5 @@
 public class Product extends Menu {
-    private double menuPrice;
+    protected double menuPrice;
 //  private int menuNumber1;
 //  private String menuCategory;
 
